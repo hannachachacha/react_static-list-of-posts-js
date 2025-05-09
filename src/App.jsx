@@ -15,12 +15,9 @@ function getUserByEmail(email) {
 }
 
 function getCommentsById(postId) {
-  return (
-    commentsFromServer
-      .filter(comment => comment.postId === postId)
-      .map(comment => ({ ...comment, user: getUserByEmail(comment.email) })) ||
-    null
-  );
+  return commentsFromServer
+    .filter(comment => comment.postId === postId)
+    .map(comment => ({ ...comment, user: getUserByEmail(comment.email) }));
 }
 
 export const posts = postsFromServer.map(post => ({
